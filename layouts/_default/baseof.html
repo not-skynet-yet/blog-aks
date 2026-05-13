@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ .Site.Params.author }}">
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
-  <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+  <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | relURL }}" title="{{ .Site.Title }}">
   {{ partial "head.html" . }}
-  <link rel="stylesheet" href="{{ "css/style.min.61a6b883261356a548717cf2f71c6a4d73154870c04c838251b78f89ba6e6809.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 </head>
 <body>
   <header class="header">
