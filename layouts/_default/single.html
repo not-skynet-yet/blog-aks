@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="post">
+  <div class="post__info">
+    {{ with .Params.author }}<strong class="post__author">{{ . }}</strong>{{ end }}
+    <span class="post__date">{{ .Date.Format "2006-01-02" }}</span>
+    {{ with .Params.tags }}<span class="post__tags">{{ range . }}#{{ . }} {{ end }}</span>{{ end }}
+  </div>
+  <h1 class="post__title">{{ .Title }}</h1>
+  <div class="post__content">
+    {{ .Content }}
+  </div>
+  {{ partial "subscribe-cta.html" . }}
+</article>
+{{ end }}

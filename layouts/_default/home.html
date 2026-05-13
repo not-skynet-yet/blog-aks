@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="home">
+  <h2>Latest Posts</h2>
+  {{ range first 10 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+  <article class="post">
+    <div class="post__info">
+      <span class="post__date">{{ .Date.Format "2006-01-02" }}</span>
+    </div>
+    <h2 class="post__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <div class="post__summary">{{ .Summary }}</div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+<div class="posts">
+  {{ range $paginator.Pages }}
+  <article class="post">
+    <div class="post__info">
+      <span class="post__date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ with .Params.tags }}<span class="post__tags">{{ range . }}#{{ . }} {{ end }}</span>{{ end }}
+    </div>
+    <h2 class="post__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <div class="post__summary">{{ .Summary }}</div>
+  </article>
+  {{ end }}
+</div>
+{{ template "_internal/pagination.html" . }}
+{{ end }}
